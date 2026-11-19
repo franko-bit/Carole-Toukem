@@ -440,7 +440,7 @@ function App() {
                 <iframe
                   key={videoId}
                   src={`https://www.youtube.com/embed/${videoId}`}
-                  title={isEnglish ? `Carole Toukem video ${index + 1}` : `Vidéo ${index + 1} de Carole Toukem`}
+                  title={`Carole Toukem — ${isEnglish ? 'Video' : 'Vidéo'} ${index + 1}`}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   referrerPolicy="strict-origin-when-cross-origin"
                   allowFullScreen
