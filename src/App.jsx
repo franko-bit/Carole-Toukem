@@ -1,14 +1,11 @@
 import { useEffect, useState } from 'react';
-import vid1 from '../vid1.mp4';
-import vid2 from '../vid2.mp4';
-import vid3 from '../vid3.mp4';
 
 const sectionIds = ['thesis', 'accompagnements', 'ebook', 'insights', 'about', 'pitch', 'contact'];
 
 const calendlyUrl = 'https://calendly.com/carole-accompagnatricedevie/45min?month=2026-11';
 const bookCoverUrl = 'https://res.cloudinary.com/franklinrw/image/upload/v1795104949/Gemini_Generated_Image_lgmed2lgmed2lgme_sicvhw.jpg';
 const quoteImageUrl = 'https://res.cloudinary.com/franklinrw/image/upload/v1795109022/Gemini_Generated_Image_12u5kw12u5kw12u5_herw9j.jpg';
-const videos = [vid1, vid2, vid3];
+const videos = ['8DGNhMhQNWg', 'UdaE0cLHBzc', '4h9V3H8pHZM'];
 
 const accompagnementsFr = [
   ['Coaching individuel', 'Séances personnalisées autour de ton mindset, ta clarté, ton identité et tes priorités.', '#pitch'],
@@ -439,14 +436,15 @@ function App() {
               </div>
             </div>
             <div className="about-video">
-              {videos.map((video, index) => (
-                <video
-                  key={video}
-                  src={video}
-                  controls
-                  playsInline
-                  preload="metadata"
-                  aria-label={isEnglish ? `Carole Toukem video ${index + 1}` : `Vidéo ${index + 1} de Carole Toukem`}
+              {videos.map((videoId, index) => (
+                <iframe
+                  key={videoId}
+                  src={`https://www.youtube.com/embed/${videoId}`}
+                  title={isEnglish ? `Carole Toukem video ${index + 1}` : `Vidéo ${index + 1} de Carole Toukem`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                  loading="lazy"
                 />
               ))}
             </div>
