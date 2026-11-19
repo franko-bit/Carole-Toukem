@@ -48,7 +48,6 @@ function App() {
   const [language, setLanguage] = useState('fr');
   const [pitchStatus, setPitchStatus] = useState('');
   const [statusVersion, setStatusVersion] = useState(0);
-  const [cityTimes, setCityTimes] = useState({ paris: '--:--:--', utc: '--:--:--' });
   const isEnglish = language === 'en';
   const accompagnements = isEnglish ? accompagnementsEn : accompagnementsFr;
   const insights = isEnglish ? insightsEn : insightsFr;
@@ -222,26 +221,6 @@ function App() {
       cursorFrame = window.requestAnimationFrame(followCursor);
     }
 
-    const updateClocks = () => {
-      const formatTime = (timeZone) => new Intl.DateTimeFormat('en-GB', {
-        timeZone,
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: false,
-      }).format(new Date());
-      try {
-        setCityTimes({
-          paris: formatTime('Europe/Paris'),
-          utc: formatTime('UTC'),
-        });
-      } catch {
-        console.error('Unable to format the displayed local times.');
-      }
-    };
-    updateClocks();
-    const clockTimer = window.setInterval(updateClocks, 1000);
-
     return () => {
       themeButton.removeEventListener('click', toggleTheme);
       sectionObserver?.disconnect();
@@ -250,7 +229,6 @@ function App() {
       wordmarkObserver?.disconnect();
       revealTimers.forEach(window.clearTimeout);
       window.removeEventListener('scroll', onScroll);
-      window.clearInterval(clockTimer);
       if (canHover) {
         magneticButtons.forEach((button) => {
           button.removeEventListener('mousemove', moveMagnet);
@@ -291,11 +269,6 @@ function App() {
           <nav className="small" aria-label="Primary">
             {navItems.map(([id, label]) => <a href={`#${id}`} key={id}>{label}</a>)}
           </nav>
-          <div className="clock small" role="status" aria-live="off">
-            <span className="clock-city">Lörrach <time className="clock-time" key={cityTimes.paris}>{cityTimes.paris}</time></span>
-            <span className="clock-separator" aria-hidden="true">/</span>
-            <span className="clock-city">UTC <time className="clock-time" key={cityTimes.utc}>{cityTimes.utc}</time></span>
-          </div>
           <button type="button" className="tbtn small" id="theme" aria-label="Toggle theme">
             <span>{themeLabel}</span><i />
           </button>
