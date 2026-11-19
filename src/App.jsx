@@ -286,11 +286,7 @@ function App() {
         <div className="wrap">
           <section className="hero" style={{ borderBottom: '1px solid var(--line)' }}>
             <div className="hero-top"><p className="label">{isEnglish ? 'Life coach / Francophone' : 'Accompagnatrice de vie / Francophone'}</p><p className="label">2026</p></div>
-            <h1 aria-label="Carole Toukem">
-              {'Carole Toukem'.split('').map((letter, index) => (
-                <span key={index} style={{ animationDelay: `${index * 0.04}s` }}>{letter === ' ' ? '\u00a0' : letter}</span>
-              ))}
-            </h1>
+            <h1>Carole Toukem</h1>
             <div className="hero-meta">
               <div className="info">
                 <ul>
