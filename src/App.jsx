@@ -436,15 +436,12 @@ function App() {
                     : 'Quand tu sais pourquoi tu fais ce que tu fais, même les jours les plus difficiles deviennent plus faciles.'}”
                 </blockquote>
                 <p className="small" style={{ marginTop: '1rem', opacity: 0.7 }}>— {isEnglish ? 'Author unknown' : 'Auteur inconnu'} / Carole Toukem</p>
-                <p className="small" style={{ marginTop: '1.5rem' }}>
-                  {isEnglish ? 'Would you like a copy of the book? Send me a request.' : 'Tu souhaites recevoir un exemplaire du livre ? Envoie-moi une demande.'}
-                </p>
                 <Cta href="#pitch">{isEnglish ? 'request a copy' : 'demander un exemplaire'}</Cta>
               </div>
               <img
                 src={quoteImageUrl}
                 alt={isEnglish ? 'Carole Toukem' : 'Carole Toukem'}
-                style={{ width: '100%', maxHeight: '28rem', objectFit: 'cover', display: 'block', borderLeft: '1px solid var(--line)' }}
+                style={{ width: '100%', height: '100%', minHeight: '28rem', objectFit: 'cover', display: 'block', borderLeft: '1px solid var(--line)' }}
               />
             </div>
           </section>
